@@ -1,4 +1,4 @@
-const server = require('./Config/app.js');
+const server = require('./src/Config/app.js');
 const { fetchGenres , fetchPlatforms} = require('./src/routes/functionsRoutes/index');
 const { conn , GenreDb , Platform } = require('./src/db')
 
