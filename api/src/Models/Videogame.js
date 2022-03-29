@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
     background_image: {
       type: STRING
     },
-    genres: {
+    genre_: {
       type: ARRAY(JSON),
     }
   })

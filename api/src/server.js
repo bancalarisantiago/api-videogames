@@ -1,16 +1,18 @@
-const server = require('./src/Config/app.js');
-const { fetchGenres , fetchPlatforms} = require('./src/routes/functionsRoutes/index');
-const { conn , GenreDb , Platform } = require('./src/db')
+const server = require('./app.js');
+const { fetchGenres , fetchPlatforms} = require('../src/Helpers/index');
+const { conn , Genre , Platform } = require('./db.js')
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
     
   server.listen(3001, async () => {
     const genresFetch = await fetchGenres().then(result =>  result.data.results)
+
+    
     const platformsFetch =  fetchPlatforms()
     
       const genresRows = genresFetch.map(genre => {
-      GenreDb.findOrCreate({where: {name: genre.name} })
+      Genre.findOrCreate({where: {name: genre.name} })
       })
       
       const platformsRows = platformsFetch.map(plat => {
