@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const { v4: uuidv4 } = require("uuid");
-const { Videogame } = require('../Models/Videogame')
+const { Videogame } = require('../db')
 const { fetchGames, fetchGamesByName, fetchGameById } = require('../Helpers/index');
 
 router.get('', async function(req, res, next) {
