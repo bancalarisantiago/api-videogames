@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const { GenreDb } = require('../Models/Genres')
+const { Genre } = require("../db")
 
 
 router.get('/', async function(req, res, next) {

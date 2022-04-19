@@ -7,17 +7,20 @@ conn.sync({ force: true }).then(() => {
     
   server.listen(3001, async () => {
     const genresFetch = await fetchGenres().then(result =>  result.data.results)
+    
 
+
+   const genres =  genresFetch.map(({name}) => {
+      Genre.findOrCreate({where: {name : name} })
+      })
     
-    const platformsFetch =  fetchPlatforms()
+    const platformsFetch = fetchPlatforms()
     
-      const genresRows = genresFetch.map(genre => {
-      Genre.findOrCreate({where: {name: genre.name} })
+    platformsFetch.map(({name , img}) => {
+      Platform.findOrCreate({where: {name,  img} })
       })
       
-      const platformsRows = platformsFetch.map(plat => {
-        Platform.findOrCreate({where: {name: plat.name, idAPI: plat.id, img: plat.img} })
-        })
+      
 
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
