@@ -36,7 +36,7 @@ router.get("/mygames", async function (req, res, next) {
         "rating",
         "release",
         "background_image",
-        "genres",
+        "_genre",
         "platforms",
       ],
     });
