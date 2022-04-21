@@ -4,19 +4,18 @@ const express = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 
 //Routers
-const videogamesRouter  = require('./videogames')
-const genresRouter  = require('./genres')
-const platformsRouter = require('./platforms')
+const videogamesRouter = require('./videogames');
+const genresRouter = require('./genres');
+const platformsRouter = require('./platforms');
 
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.use(express.json())
-router.use('/videogames',videogamesRouter)
-router.use('/genres',genresRouter)
-router.use('/platforms',platformsRouter)
-
+router.use(express.json());
+router.use('/videogames', videogamesRouter);
+router.use('/genres', genresRouter);
+router.use('/platforms', platformsRouter);
 
 module.exports = router;
