@@ -1,10 +1,10 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-const { Videogame } = require("../db");
-const { fetchGames, findByName, findGameById } = require("../Helpers/index");
+const { Videogame } = require('../db');
+const { fetchGames, findByName, findGameById } = require('../Helpers/index');
 
-router.get("", async function (req, res, next) {
+router.get('', async function (req, res, next) {
   const { name } = req.query;
   if (name) {
     try {
@@ -26,18 +26,18 @@ router.get("", async function (req, res, next) {
   }
 });
 
-router.get("/mygames", async function (req, res, next) {
+router.get('/mygames', async function (req, res, next) {
   try {
     const videogames = await Videogame.findAll({
       attributes: [
-        "id",
-        "name",
-        "description_raw",
-        "rating",
-        "release",
-        "background_image",
-        "_genre",
-        "platforms",
+        'id',
+        'name',
+        'description_raw',
+        'rating',
+        'release',
+        'background_image',
+        '_genre',
+        'platforms',
       ],
     });
     res.json(videogames);
@@ -46,12 +46,12 @@ router.get("/mygames", async function (req, res, next) {
   }
 });
 
-router.get("/:id", async function (req, res, next) {
+router.get('/:id', async function (req, res, next) {
   var { id } = req.params;
 
   if (id.length < 8) {
     const gameById = await findGameById(id);
-    if (typeof gameById === "string")
+    if (typeof gameById === 'string')
       return res.status(400).json({ msg: gameById });
 
     const {
@@ -83,7 +83,7 @@ router.get("/:id", async function (req, res, next) {
   }
 });
 
-router.post("/", async function (req, res, next) {
+router.post('/', async function (req, res, next) {
   const {
     name,
     description_raw,
@@ -116,7 +116,7 @@ router.post("/", async function (req, res, next) {
 
     await game.addGenreDb(array);
 
-    if (game) res.send("The videogame has been succesfully created.");
+    if (game) res.send('The videogame has been succesfully created.');
 
     return game;
   } catch (error) {

@@ -1,6 +1,6 @@
-const server = require("./src/app.js");
-const { fetchGenres, fetchPlatforms } = require("./src/Helpers/index");
-const { conn, Genre, Platform } = require("./src/db.js");
+const server = require('./src/app.js');
+const { fetchGenres, fetchPlatforms } = require('./src/Helpers/index');
+const { conn, Genre, Platform } = require('./src/db.js');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
@@ -20,6 +20,6 @@ conn.sync({ force: true }).then(() => {
       Platform.findOrCreate({ where: { name, img: image_background } });
     });
 
-    console.log("DB listening at PORT : 3001"); // eslint-disable-line no-console
+    console.log('DB listening at PORT : 3001'); // eslint-disable-line no-console
   });
 });
